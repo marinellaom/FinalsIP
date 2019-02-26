@@ -6,6 +6,7 @@ import java.awt.Color;
 public class MyFrame extends JFrame implements KeyListener{
 
 	 Draw drawing;
+
 	
 	public MyFrame(){
 	this.drawing = new Draw();
@@ -82,6 +83,4 @@ public class MyFrame extends JFrame implements KeyListener{
 		gameFrame.addKeyListener(gameFrame);
 		System.out.println("practical programming");
 	}
-
-
 }

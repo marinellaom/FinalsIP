@@ -72,7 +72,7 @@ public class Draw extends JComponent{
 
 	public void spawnEnemy(){
 		if(enemyCount < 10){
-			monsters[enemyCount] = new Monster(randomizer.nextInt(100), randomizer.nextInt(100), this);
+			monsters[enemyCount] = new Monster(randomizer.nextInt(500), randomizer.nextInt(500), this);
 			enemyCount++;
 		}
 	}
@@ -133,13 +133,20 @@ public class Draw extends JComponent{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 				}
+
+				for(int x=0; x<monsters.length; x++){
+					if(monsters[x]!=null){
+						if(monsters[x].contact){
+							monsters[x].life = monsters[x].life - 5;
+						}
+					}
+				}
 			}
 		}
 	});
-	
 	thread1.start();
+	}
 
-}
 
 	public void attackAnimation2(){
 		Thread thread2 = new Thread(new Runnable(){
@@ -163,13 +170,20 @@ public class Draw extends JComponent{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 				}
-			}
 
+			for(int x=0; x<monsters.length; x++){
+					if(monsters[x]!=null){
+						if(monsters[x].contact){
+							monsters[x].life = monsters[x].life - 5;
+						}
+					}
+				}
 			}
-		});
-	
+		}
+	});
 	thread2.start();
-}
+	}
+
 
 	
 	public void attackAnimation3(){
@@ -194,12 +208,20 @@ public class Draw extends JComponent{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 				}
+				for(int x=0; x<monsters.length; x++){
+					if(monsters[x]!=null){
+						if(monsters[x].contact){
+							monsters[x].life = monsters[x].life - 5;
+						}
+					}
+				}
 			}
 		}
 	});
-	
 	thread3.start();
-}
+	}
+
+
 
 	public void attackAnimation4(){
 		Thread thread4 = new Thread(new Runnable(){
@@ -223,12 +245,20 @@ public class Draw extends JComponent{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 				}
+				for(int x=0; x<monsters.length; x++){
+					if(monsters[x]!=null){
+						if(monsters[x].contact){
+							monsters[x].life = monsters[x].life - 5;
+						}
+					}
+				}
 			}
 		}
 	});
-	
 	thread4.start();
-}
+	}
+
+
 	public void attackAnimation5(){
 		Thread thread5 = new Thread(new Runnable(){
 			public void run(){
@@ -251,30 +281,49 @@ public class Draw extends JComponent{
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 				}
+
+				for(int x=0; x<monsters.length; x++){
+					if(monsters[x]!=null){
+						if(monsters[x].contact){
+							monsters[x].life = monsters[x].life - 5;
+						}
+					}
+				}
 			}
 		}
 	});
-	
 	thread5.start();
-}
+	}
+
+
 	public void attack(){
 		attackAnimation();
+		repaint();
+		checkCollision();
 	}
 
 	public void attack2(){
 		attackAnimation2();
+		repaint();
+		checkCollision();
 	}
 
 	public void attack3(){
 		attackAnimation3();
+		repaint();
+		checkCollision();
 	}
 
 	public void attack4(){
 		attackAnimation4();
+		repaint();
+		checkCollision();
 	}
 
 	public void attack5(){
 		attackAnimation5();
+		repaint();
+		checkCollision();
 	}
 
 	public void moveUp(){
@@ -295,6 +344,47 @@ public class Draw extends JComponent{
 	public void moveRight(){
 		x = x + 5;
 		repaint();
+	}
+
+	public void checkCollision(){
+		int xChecker = x + width;
+		int yChecker = y;
+
+		for(int x=0; x<monsters.length; x++){
+			boolean collideX = false;
+			boolean collideY = false;
+
+			if(monsters[x]!=null){
+				monsters[x].contact = false;
+
+				if(yChecker > monsters[x].yPos){
+					if(yChecker-monsters[x].yPos < monsters[x].height){
+						collideY = true;
+					}
+				}
+				else{
+					if(monsters[x].yPos - yChecker < monsters[x].height){
+						collideY = true;
+					}
+				}
+
+				if(xChecker > monsters[x].xPos){
+					if(xChecker-monsters[x].xPos < monsters[x].width){
+						collideX = true;
+					}
+				}
+				else{
+					if(monsters[x].xPos - xChecker < 2){
+						collideX = true;
+					}
+				}
+			}
+
+			if(collideX && collideY){
+				System.out.println("collision!");
+				monsters[x].contact = true;
+			}
+		}
 	}
 
 
