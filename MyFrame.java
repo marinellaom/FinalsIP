@@ -2,14 +2,20 @@ import javax.swing.JFrame;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.Color;
+import java.io.IOException;
+import java.io.File;
 
 public class MyFrame extends JFrame implements KeyListener{
 
 	 Draw drawing;
+	 Sound sound;
+
+	 
 
 	
 	public MyFrame(){
 	this.drawing = new Draw();
+	this.sound = new Sound();
 }
 
 	public void keyPressed(KeyEvent e){
@@ -57,6 +63,9 @@ public class MyFrame extends JFrame implements KeyListener{
         else if(e.getKeyCode() == KeyEvent.VK_S){
 			drawing.spawnEnemy();
 		}
+		else if(e.getKeyCode() == KeyEvent.VK_P){
+			sound.play();
+		}
 	
 		drawing.reloadImage();
 	}
@@ -68,6 +77,10 @@ public class MyFrame extends JFrame implements KeyListener{
 	public void keyTyped(KeyEvent e){
 
 	}
+
+	
+
+
 
 	public static final Color LIGHT = new Color(255,255,204);
 
