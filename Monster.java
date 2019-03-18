@@ -10,7 +10,7 @@ public class Monster{
 	
 	public int xPos = 300;
 	public int yPos = 300;
-	public int life = 30;
+	public int life = 40;
 	public int height = 0;
 	public int width = 0;
 	public boolean idle = true;
@@ -105,7 +105,7 @@ public class Monster{
 		if(alive){
 			Thread monThread = new Thread(new Runnable(){
 				public void run(){
-					for(int ctr = 0; ctr < 8; ctr++){
+					for(int ctr = 0; ctr < 7; ctr++){
 						try {					
 							resource = getClass().getResource("deadmon/dead"+ctr+".png");
 							

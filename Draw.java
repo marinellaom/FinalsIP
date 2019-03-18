@@ -21,6 +21,7 @@ public class Draw extends JComponent{
 	public int height = 0;
 	public int width = 0;
 
+
 	public int state = 0; 
 
 	// randomizer
@@ -114,9 +115,9 @@ public class Draw extends JComponent{
 	public void attackAnimation(){
 		Thread thread1 = new Thread(new Runnable(){
 			public void run(){
-				for (int ctr = 0; ctr < 6; ctr++){
+				for (int ctr = 0; ctr < 7; ctr++){
 					try{
-						if(ctr==4){
+						if(ctr==6){
 							resource = getClass().getResource("run0.png");
 						}
 						else{
@@ -129,7 +130,7 @@ public class Draw extends JComponent{
 							e.printStackTrace();
 						}
 						repaint();
-						Thread.sleep(180);
+						Thread.sleep(150);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 				}
@@ -137,7 +138,7 @@ public class Draw extends JComponent{
 				for(int x=0; x<monsters.length; x++){
 					if(monsters[x]!=null){
 						if(monsters[x].contact){
-							monsters[x].life = monsters[x].life - 5;
+							monsters[x].life = monsters[x].life - 3;
 						}
 					}
 				}
@@ -151,9 +152,9 @@ public class Draw extends JComponent{
 	public void attackAnimation2(){
 		Thread thread2 = new Thread(new Runnable(){
 			public void run(){
-				for (int ctr = 0; ctr < 4; ctr++){
+				for (int ctr = 0; ctr < 5; ctr++){
 					try{
-						if(ctr==3){
+						if(ctr==4){
 							resource = getClass().getResource("run0.png");
 						}
 						else{
@@ -174,7 +175,7 @@ public class Draw extends JComponent{
 			for(int x=0; x<monsters.length; x++){
 					if(monsters[x]!=null){
 						if(monsters[x].contact){
-							monsters[x].life = monsters[x].life - 5;
+							monsters[x].life = monsters[x].life - 1;
 						}
 					}
 				}
@@ -189,9 +190,9 @@ public class Draw extends JComponent{
 	public void attackAnimation3(){
 		Thread thread3 = new Thread(new Runnable(){
 			public void run(){
-				for (int ctr = 0; ctr < 9; ctr++){
+				for (int ctr = 0; ctr < 10; ctr++){
 					try{
-						if(ctr==8){
+						if(ctr==9){
 							resource = getClass().getResource("run0.png");
 						}
 						else{
@@ -204,14 +205,14 @@ public class Draw extends JComponent{
 							e.printStackTrace();
 						}
 						repaint();
-						Thread.sleep(190);
+						Thread.sleep(125);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 				}
 				for(int x=0; x<monsters.length; x++){
 					if(monsters[x]!=null){
 						if(monsters[x].contact){
-							monsters[x].life = monsters[x].life - 5;
+							monsters[x].life = monsters[x].life - 3;
 						}
 					}
 				}
@@ -226,9 +227,9 @@ public class Draw extends JComponent{
 	public void attackAnimation4(){
 		Thread thread4 = new Thread(new Runnable(){
 			public void run(){
-				for (int ctr = 0; ctr < 4; ctr++){
+				for (int ctr = 0; ctr < 5; ctr++){
 					try{
-						if(ctr==3){
+						if(ctr==4){
 							resource = getClass().getResource("run0.png");
 						}
 						else{
@@ -262,9 +263,9 @@ public class Draw extends JComponent{
 	public void attackAnimation5(){
 		Thread thread5 = new Thread(new Runnable(){
 			public void run(){
-				for (int ctr = 0; ctr < 6; ctr++){
+				for (int ctr = 0; ctr < 7; ctr++){
 					try{
-						if(ctr==5){
+						if(ctr==6){
 							resource = getClass().getResource("run0.png");
 						}
 						else{
@@ -400,8 +401,10 @@ public class Draw extends JComponent{
 				// g.setColor(Color.BLUE);
 				// g.fillRect(monsters[c].xPos, monsters[c].yPos+5, monsters[c].width, monsters[c].height);
 				g.drawImage(monsters[c].image, monsters[c].xPos, monsters[c].yPos, this);
-				g.setColor(Color.GREEN);
-				g.fillRect(monsters[c].xPos+7, monsters[c].yPos, monsters[c].life, 2);
+				g.setColor(Color.RED);
+				g.fillRect(monsters[c].xPos+15, monsters[c].yPos, monsters[c].life, 3);
+
+		
 			}	
 		}
 	}
