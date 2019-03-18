@@ -9,7 +9,7 @@ import javax.swing.JComponent;
 public class Monster{
 	
 	public int xPos = 300;
-	public int yPos = 300;
+	public int yPos = 400;
 	public int life = 40;
 	public int height = 0;
 	public int width = 0;

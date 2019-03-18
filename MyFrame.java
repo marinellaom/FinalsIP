@@ -10,6 +10,9 @@ public class MyFrame extends JFrame implements KeyListener{
 	 Draw drawing;
 	 Sound sound;
 
+	 // Press P = play sound
+	 // Press S = spawn enemy
+
 	 
 
 	
@@ -91,11 +94,14 @@ public class MyFrame extends JFrame implements KeyListener{
 
 		MyFrame  gameFrame = new MyFrame();
 
-		gameFrame.setSize(620,600);
+		gameFrame.setSize(750,500);
 		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameFrame.setVisible(true);
 		gameFrame.getContentPane().add(gameFrame.drawing);
 		gameFrame.getContentPane().setBackground(LIGHT);
 		gameFrame.addKeyListener(gameFrame);
+		gameFrame.setResizable(false);	
+
+		
 	}
 }

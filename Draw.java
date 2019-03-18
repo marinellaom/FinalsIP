@@ -9,6 +9,12 @@ import java.net.URL;
 import java.util.Random;
 
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.Toolkit;
+import java.awt.Image;
+
+
 public class Draw extends JComponent{
 
 	private BufferedImage image;
@@ -38,7 +44,7 @@ public class Draw extends JComponent{
 		
 		try{
 			image = ImageIO.read(resource);
-			backgroundImage = ImageIO.read(getClass().getResource("bg3.jpg"));
+			backgroundImage = ImageIO.read(getClass().getResource("bg4.jpg"));
 		}
 		catch(IOException e){
 			e.printStackTrace();
@@ -389,12 +395,22 @@ public class Draw extends JComponent{
 	}
 
 
+
+
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.setColor(Color.YELLOW);
+		g.setColor(Color.BLACK);
 		g.drawImage(backgroundImage, 0, 0, this);
 		g.drawImage(image, x, y, this);
-	
+		//g.setColor(Color.BLACK);
+		//g.fillRect(0, 380, 750, 50);
+		g.setColor(Color.WHITE);
+		g.drawString("Press P to Play Sound", 15, 20 );
+
+		Image image = Toolkit.getDefaultToolkit().getImage("brick.jpg");
+		    g.drawImage(image, 0, 400, this);
+
+		
 	for(int c = 0; c < monsters.length; c++){
 			if(monsters[c]!=null){
 				// character grid for monsters
@@ -404,7 +420,13 @@ public class Draw extends JComponent{
 				g.setColor(Color.RED);
 				g.fillRect(monsters[c].xPos+15, monsters[c].yPos, monsters[c].life, 3);
 
+
+	
 		
+	
+	
+
+
 			}	
 		}
 	}
