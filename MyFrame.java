@@ -9,7 +9,6 @@ public class MyFrame extends JFrame implements KeyListener{
 
 	 Draw drawing;
 	 Sound sound;
-	 HUD hud;
 
 	 
 
@@ -17,7 +16,6 @@ public class MyFrame extends JFrame implements KeyListener{
 	public MyFrame(){
 	this.drawing = new Draw();
 	this.sound = new Sound();
-	this.hud = new HUD();
 
 }
 
