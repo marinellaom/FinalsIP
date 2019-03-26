@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.Random;
+import java.awt.Font;
 
 
 import javax.swing.JFrame;
@@ -17,9 +18,11 @@ import java.awt.Image;
 
 public class Draw extends JComponent{
 
-	private BufferedImage image;
+	
+	private BufferedImage image;	
 	private BufferedImage backgroundImage;
 	public URL resource = getClass().getResource("run0.png");
+	private Font font;
 
 	// circle's position
 	public int x = 250;
@@ -44,7 +47,9 @@ public class Draw extends JComponent{
 		
 		try{
 			image = ImageIO.read(resource);
+			font = new Font("Courier New", Font.PLAIN, 12);
 			backgroundImage = ImageIO.read(getClass().getResource("bg4.jpg"));
+
 		}
 		catch(IOException e){
 			e.printStackTrace();
@@ -404,18 +409,21 @@ public class Draw extends JComponent{
 		g.drawImage(image, x, y, this);
 		//g.setColor(Color.BLACK);
 		//g.fillRect(0, 380, 750, 50);
-		g.setColor(Color.WHITE);
-		g.drawString("Press P to Play Sound", 15, 20 );
 
-		Image image = Toolkit.getDefaultToolkit().getImage("brick.jpg");
-		    g.drawImage(image, 0, 400, this);
+		Image floor = Toolkit.getDefaultToolkit().getImage("brick.jpg");
+		Image title = Toolkit.getDefaultToolkit().getImage("outbreak.png");
+	
+		g.drawImage(floor, 0,400, this);
+		g.drawImage(title, 500, 412, this);
+	
+		g.setFont(font);
+		g.setColor(Color.WHITE);
+		g.drawString("Press P to Play Sound", 12, 20 );
 
 		
-	for(int c = 0; c < monsters.length; c++){
+			for(int c = 0; c < monsters.length; c++){
 			if(monsters[c]!=null){
-				// character grid for monsters
-				// g.setColor(Color.BLUE);
-				// g.fillRect(monsters[c].xPos, monsters[c].yPos+5, monsters[c].width, monsters[c].height);
+		
 				g.drawImage(monsters[c].image, monsters[c].xPos, monsters[c].yPos, this);
 				g.setColor(Color.RED);
 				g.fillRect(monsters[c].xPos+15, monsters[c].yPos, monsters[c].life, 3);
