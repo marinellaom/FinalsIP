@@ -407,8 +407,8 @@ public class Draw extends JComponent{
 		g.setColor(Color.BLACK);
 		g.drawImage(backgroundImage, 0, 0, this);
 		g.drawImage(image, x, y, this);
-		//g.setColor(Color.BLACK);
-		//g.fillRect(0, 380, 750, 50);
+		g.setColor(Color.GREEN);
+		g.fillRect(x+12,y,40,3);
 
 		Image floor = Toolkit.getDefaultToolkit().getImage("brick.jpg");
 		Image title = Toolkit.getDefaultToolkit().getImage("outbreak.png");
@@ -426,13 +426,8 @@ public class Draw extends JComponent{
 		
 				g.drawImage(monsters[c].image, monsters[c].xPos, monsters[c].yPos, this);
 				g.setColor(Color.RED);
-				g.fillRect(monsters[c].xPos+15, monsters[c].yPos, monsters[c].life, 3);
+				g.fillRect(monsters[c].xPos+15, monsters[c].yPos+8, monsters[c].life, 3);
 
-
-	
-		
-	
-	
 
 
 			}	
